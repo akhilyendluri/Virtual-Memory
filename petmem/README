@@ -1,0 +1,42 @@
+Steps to run:
+
+1. cd to ../petmem
+2. make
+3. rmmod petmem.ko 
+4. insmod petmem.ko
+5. cd to ../petmem/user
+6. make
+7. ./test
+8. ./mytest
+
+Explanation of test cases
+
+check_malloc()
+
+  checks working of pet_malloc and checks pet_malloc(0) returns NULL
+ 
+test_multiple_pages();
+  Allocating 500 * 32 * 1024 bytes of memory in Virtual address space
+  Assigning values to the array
+  Freeing the assigned values
+
+check_free()
+  checks working of pet_free and pet_free(NULL)
+  
+handling_multiple_pages();
+  creating 2 pages and assigning values across pages
+
+check_for_multiple_processes()
+  forking and checking if processes can access the same virtual address space 
+
+handle_invalid_address()
+  checks our program handles address out of range
+
+
+What works
+1. multiple allocations
+2. multiple frees
+3. multiple page faults
+4. init and denit works
+
+Not sure what happens if we accessing memory for more than the available physical memory 128 MB.
